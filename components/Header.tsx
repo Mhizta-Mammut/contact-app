@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import FormSubscribe from "./elements/FormSubscribe";
 import Ddm from "./elements/DropDownMenu";
 import Link from "next/link";
+import { useSession } from "next-auth/client";
 
 interface Props {
   forceMenuOpenInMobile?: boolean;
@@ -15,7 +16,7 @@ interface Props {
   hideHelp?: boolean;
   withSearchBar?: boolean;
   isFat?: boolean;
-  withRequestLink?: boolean;
+  withAuth?: boolean;
 }
 interface HeaderLink {
   label: string;
@@ -33,6 +34,7 @@ interface DDMItem {
 
 const Header = (props: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [loading, session] = useSession();
 
   return (
     <div>
@@ -50,11 +52,7 @@ const Header = (props: Props) => {
             >
               <Link href="/">
                 <a className="flex-shrink-0">
-                  <img
-                    className="w-8 h-8"
-                    src="/icons/rocket.svg"
-                    alt="Workflow"
-                  />
+                  <img className="w-8 h-8" src="/img/log.png" alt="LOGO" />
                 </a>
               </Link>
 
@@ -88,8 +86,15 @@ const Header = (props: Props) => {
                 </div>
               )}
               <div className="flex items-center ml-4 md:ml-6">
-                {props.withRequestLink && (
-                  <Link href="/request">
+                {/* {session ? (
+                  <Link href="/profile">
+                    <a className="px-3 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">
+                      Profile
+                    </a>
+                  </Link>
+                ) : null} */}
+                {props.withAuth && (
+                  <Link href="/login">
                     <a className="">
                       <svg
                         width="2048"

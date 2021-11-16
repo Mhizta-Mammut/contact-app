@@ -2,41 +2,10 @@
 import Head from "next/head";
 import { useSession, signIn, signOut, getSession } from "next-auth/client";
 import { InferGetServerSidePropsType } from "next";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import prisma from "../lib/prisma";
-import Header from "../components/Header";
 
-const links = [
-  {
-    label: "Home",
-    link: "/",
-    isSelected: true,
-    desc: "Home Page",
-    icon: "",
-  },
-  {
-    label: "Create Contact",
-    link: "/",
-    isSelected: true,
-    desc: "Home Page",
-    icon: "",
-  },
-  {
-    label: "Contact",
-    link: "/",
-    isSelected: true,
-    desc: "Home Page",
-    icon: "",
-  },
-  {
-    label: "About",
-    link: "/",
-    isSelected: true,
-    desc: "Home Page",
-    icon: "",
-  },
-];
 export default function Home({
       contacts,
     }: InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -68,7 +37,7 @@ export default function Home({
         <title>Contact App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header links={links} />
+
       <img
         src={session.user.image}
         alt="profile"
