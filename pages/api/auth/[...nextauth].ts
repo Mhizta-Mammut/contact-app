@@ -13,6 +13,7 @@ const options = {
   ],
   adapter: Adapter.Prisma.Adapter({ prisma }),
   // secret:
+  debug: true,
 };
 
 const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options);

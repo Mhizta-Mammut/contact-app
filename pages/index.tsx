@@ -5,6 +5,7 @@ import { InferGetServerSidePropsType } from "next";
 // import Image from "next/image";
 import Link from "next/link";
 import prisma from "../lib/prisma";
+import AppLayout from "../components/layout/AppLayout";
 
 export default function Home({
       contacts,
@@ -32,45 +33,50 @@ export default function Home({
   }
 
   return (
-    <div>
-      <Head>
-        <title>Contact App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <AppLayout
+      title="Footers sections free Tailwind components"
+      desc="Footers sections more components for tailwind css"
+    >
+      <div>
+        <Head>
+          <title>Contact App</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <img
-        src={session.user.image}
-        alt="profile"
-        className="w-20 h-20 rounded-full"
-      />
-      <button
-        className="px-3 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
-        onClick={() => {
-          signOut();
-        }}
-      >
-        Sign Out
-      </button>
-      <h1>Contacts</h1>
-      <br />
-      <ul>
-        {contacts.length === 0 ? (
-          <p>You dont have any contact</p>
-        ) : (
-          contacts.map((contact) => (
-            <li key={contact.id}>
-              <p> Name: {contact.name}</p>
-              <p> Number: {contact.number}</p>
-            </li>
-          ))
-        )}
-      </ul>
-      <Link href="/create">
-        <a className="px-3 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">
-          Create New Contact
-        </a>
-      </Link>
-    </div>
+        <img
+          src={session.user.image}
+          alt="profile"
+          className="w-20 h-20 rounded-full"
+        />
+        <button
+          className="px-3 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+          onClick={() => {
+            signOut();
+          }}
+        >
+          Sign Out
+        </button>
+        <h1>Contacts</h1>
+        <br />
+        <ul>
+          {contacts.length === 0 ? (
+            <p>You dont have any contact</p>
+          ) : (
+            contacts.map((contact) => (
+              <li key={contact.id}>
+                <p> Name: {contact.name}</p>
+                <p> Number: {contact.number}</p>
+              </li>
+            ))
+          )}
+        </ul>
+        <Link href="/create">
+          <a className="px-3 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">
+            Create New Contact
+          </a>
+        </Link>
+      </div>
+    </AppLayout>
   );
 }
 
