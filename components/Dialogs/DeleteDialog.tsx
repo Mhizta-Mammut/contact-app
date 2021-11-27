@@ -1,4 +1,6 @@
 import React from "react";
+import ExitIcon from "./ExitIcon";
+import IconButton from "./IconButton";
 
 interface Props {
   children: React.ReactNode;
