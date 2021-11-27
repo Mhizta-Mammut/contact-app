@@ -22,20 +22,20 @@ const links = [
   },
 ];
 
-const ddmItems = [
-  {
-    label: "Settings",
-    link: "/settings",
-  },
-  {
-    label: "Account",
-    link: "/account",
-  },
-  {
-    label: "Logout",
-    link: "/Logout",
-  },
-];
+// const ddmItems = [
+//   {
+//     label: "Settings",
+//     link: "/settings",
+//   },
+//   {
+//     label: "Account",
+//     link: "/account",
+//   },
+//   {
+//     label: "Logout",
+//     link: "/Logout",
+//   },
+// ];
 
 const footerLinks = [
   {
@@ -103,21 +103,6 @@ const footerLinks = [
   },
 ];
 
-// const footerLink = [
-//   {
-//     label: "Configuration",
-//     link: "/started",
-//   },
-//   {
-//     label: "Github",
-//     link: "https://github.com/Charlie85270/bbhgbv",
-//   },
-//   {
-//     label: "LinkedIn",
-//     link: "https://www.linkedin.com/in/crabiller/",
-//   },
-// ];
-
 interface Props {
   title: string;
   desc: string;
@@ -136,7 +121,6 @@ const AppLayout = ({ title, desc, children, withPub }: Props) => {
               links={links}
               hideGitHubLink={true}
               withShadow={true}
-              ddmItems={ddmItems}
               hideHelp
               isFat
             />

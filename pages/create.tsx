@@ -12,12 +12,15 @@ const Create = (props) => {
     const body = { name, email, number };
 
     try {
-      await fetch("/api/create-contact", {
+      const result = await fetch("/api/create-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      await Router.push("/");
+      if (result.status === 200) {
+        await Router.push("/");
+      }
+      console.log(result.statusText);
     } catch (e) {
       console.log(e);
     }

@@ -2,9 +2,11 @@ import React from "react";
 
 interface Props {
   type?: string;
+  value?: string;
   label?: string;
   required?: boolean;
   error?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   icon?: JSX.Element;
   helper?: string;
   placeholder?: string;
@@ -50,8 +52,10 @@ const InputText = (props: Props) => {
             : !props.square
             ? " rounded-lg border-transparent"
             : ""
-        } flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent`}
+        } flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent`}
         type={props.type || "text"}
+        value={props.value || ""}
+        onChange={props.onChange}
         name={props.name}
         placeholder={props.placeholder}
       />
