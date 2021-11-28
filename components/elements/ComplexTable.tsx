@@ -2,6 +2,11 @@ import React, { FC } from "react";
 import Link from "next/link";
 import FormSubscribe from "./FormSubscribe";
 import PagerButton from "./PagerButton";
+import Confirm from "../Dialogs/Confirm";
+import IconButton from "../Dialogs/IconButton";
+import { useState } from "react";
+import ExitIcon from "../Dialogs/ExitIcon";
+import { raw } from "@prisma/client/runtime";
 
 interface Props {
   withHeader?: boolean;
@@ -18,11 +23,12 @@ interface TableProps {
 }
 
 export const DeleteContact = async (id) => {
-  return;
+  return alert(`yes it works__ id=${id}`);
 };
 
 const ComplexTable = (props: Props) => {
   const headers = ["Name", "Number", "Email", "Action"];
+  const [confirmOpen, setConfirmOpen] = useState(false);
 
   return (
     <div className="container px-4 mx-auto max-w-7xl sm:px-8">
@@ -92,7 +98,7 @@ const ComplexTable = (props: Props) => {
                           </a>
                         </Link>
 
-                        <a
+                        {/* <a
                           className="cursor-pointer"
                           onClick={() => alert(`Deleted ${row.id}`)}
                         >
@@ -103,7 +109,29 @@ const ComplexTable = (props: Props) => {
                             ></span>
                             <span className="relative">Delete</span>
                           </span>
-                        </a>
+                        </a> */}
+                        {/* <div> */}
+                        <IconButton
+                          aria-label="delete"
+                          onClick={() => setConfirmOpen(true)}
+                        >
+                          <span className="relative inline-block px-3 py-1 m-1 font-semibold leading-tight text-green-900">
+                            <span
+                              aria-hidden
+                              className="absolute inset-0 bg-red-200 rounded-full opacity-50"
+                            ></span>
+                            <span className="relative">Delete</span>
+                          </span>
+                        </IconButton>
+                        <Confirm
+                          title="Delete Post?"
+                          open={confirmOpen}
+                          onClose={() => setConfirmOpen(false)}
+                          onConfirm={() => DeleteContact(row.id)}
+                        >
+                          Are you sure you want to delete this post?
+                        </Confirm>
+                        {/* </div> */}
                       </td>
                     </tr>
                   );
